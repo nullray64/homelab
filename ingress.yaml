@@ -16,6 +16,9 @@ spec:
   - hosts:
     - whoami.nr64.art
     secretName: whoami-tls-cert
+  - hosts:
+    - ghost.nr64.art
+    secretName: ghost-tls-cert
   rules:
   - host: memos.nr64.art
     http:
@@ -37,3 +40,13 @@ spec:
             name: whoami-service
             port:
               number: 5231
+  - host: ghost.nr64.art
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ghost-service
+            port:
+              number: 80
