@@ -12,8 +12,10 @@ spec:
   tls:
   - hosts:
     - memos.nr64.art
+    secretName: memos-tls-cert
+  - hosts:
     - whoami.nr64.art
-    secretName: homelab-tls-cert
+    secretName: whoami-tls-cert
   rules:
   - host: memos.nr64.art
     http:

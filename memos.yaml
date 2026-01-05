@@ -44,10 +44,9 @@ metadata:
   name: memos-service
   namespace: homelab
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: memos
   ports:
     - port: 5230
       targetPort: 5230
-      nodePort: 30001
