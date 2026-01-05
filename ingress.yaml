@@ -5,8 +5,14 @@ metadata:
   namespace: homelab
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: "letsencrypt-prod" # Связываем с Issuer
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"   # Авто-редирект с http на https
 spec:
   ingressClassName: public # Указываем MicroK8s использовать встроенный Nginx
+  tls:
+  - hosts:
+    - memos.nr64.art
+    secretName: memos-tls-cert
   rules:
   - host: memos.nr64.art
     http:
